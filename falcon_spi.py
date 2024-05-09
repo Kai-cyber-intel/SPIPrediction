@@ -242,7 +242,7 @@ def plot_feature_importance4(feature_names, importance_scores):
 #----------------------------------------------------------------------------------------------------------------------------------------
 def show_predict_page1():    
 
-    st.title(f"{project.upper()}")
+    st.title("FALCON")
     st.title("SPI Prediction (Mechanical Package)")
     st.write("""### Input leading indicators from subcontractors' weekly report to detect possible schedule delay""")
     
@@ -293,7 +293,7 @@ def show_predict_page1():
         plot_feature_importance1(feature_names1, importance_scores)
 
 def show_predict_page2():
-    st.title(f"{project.upper()}")
+    st.title("FALCON")
     st.title("SPI Prediction (Cleanroom Package)")
     st.write("""### Input leading indicators from subcontractors' weekly report to detect possible schedule delay""")
     
@@ -334,7 +334,7 @@ def show_predict_page2():
         plot_feature_importance2(feature_names2, importance_scores)
 
 def show_predict_page3():
-    st.title(f"{project.upper()}")
+    st.title("FALCON")
     st.title("SPI Prediction (HVAC Package)")
     st.write("""### Input leading indicators from subcontractors' weekly report to detect possible schedule delay""")
     
@@ -375,7 +375,7 @@ def show_predict_page3():
         plot_feature_importance3(feature_names3, importance_scores)
 
 def show_predict_page4():
-    st.title(f"{project.upper()}")
+    st.title("FALCON")
     st.title("SPI Prediction (Electrical Package)")
     st.write("""### Input leading indicators from subcontractors' weekly report to detect possible schedule delay""")
     
@@ -414,22 +414,22 @@ def show_predict_page4():
 
 
 def show_predict_page5():
-    st.title(f"{project.upper()}")
+    st.title("PELICAN")
     st.title("SPI Prediction (Mechanical Package)")
     st.write("""### Input leading indicators from subcontractors' weekly report to detect possible schedule delay""")
 
 def show_predict_page6():
-    st.title(f"{project.upper()}")
+    st.title("PELICAN")
     st.title("SPI Prediction (Cleanroom Package)")
     st.write("""### Input leading indicators from subcontractors' weekly report to detect possible schedule delay""")
 
 def show_predict_page7():
-    st.title(f"{project.upper()}")
+    st.title("PELICAN")
     st.title("SPI Prediction (HVAC Package)")
     st.write("""### Input leading indicators from subcontractors' weekly report to detect possible schedule delay""")
 
 def show_predict_page8():
-    st.title(f"{project.upper()}")
+    st.title("PELICAN")
     st.title("SPI Prediction (Electrical Package)")
     st.write("""### Input leading indicators from subcontractors' weekly report to detect possible schedule delay""")
 
@@ -459,37 +459,38 @@ if __name__ == '__main__':
     elif st.session_state.page == "streamlit-app":
         project = st.sidebar.selectbox("Select Project", ["Falcon", "Pelican"])
         st.session_state.project = project.lower()
-        st.sidebar.write("Select Package")
+        package = st.sidebar.selectbox("Select Package", ["Mechanical",'Cleanroom','HVAC','Electrical'])
+        st.session_state.package = package.lower()
 
 
         if project.lower()=='falcon':
-            if st.sidebar.button("Mechanical"):
+            if package.lower()=='mechanical':
                 st.session_state.prediction_page = "predict-page1"
-                st.experimental_rerun()
-            if st.sidebar.button("Cleanroom"):
+             
+            if package.lower()=='cleanroom':
                 st.session_state.prediction_page = "predict-page2"
-                st.experimental_rerun()
-            if st.sidebar.button("HVAC"):
+               
+            if package.lower()=='hvac':
                 st.session_state.prediction_page = "predict-page3"
-                st.experimental_rerun()
-            if st.sidebar.button("Electrical"):
+              
+            if package.lower()=='electrical':
                 st.session_state.prediction_page = "predict-page4"
-                st.experimental_rerun()
-           
+               
+        
 
         if project.lower()=='pelican':
-            if st.sidebar.button("Mechanical"):
+            if package.lower()=='mechanical':
                 st.session_state.prediction_page = "predict-page5"
-                st.experimental_rerun()
-            if st.sidebar.button("Cleanroom"):
+              
+            if package.lower()=='cleanroom':
                 st.session_state.prediction_page = "predict-page6"
-                st.experimental_rerun()
-            if st.sidebar.button("HVAC"):
+              
+            if package.lower()=='hvac':
                 st.session_state.prediction_page = "predict-page7"
-                st.experimental_rerun()
-            if st.sidebar.button("Electrical"):
+                
+            if package.lower()=='electrical':
                 st.session_state.prediction_page = "predict-page8"
-                st.experimental_rerun()
+              
                 
 
         if st.session_state.prediction_page == "predict-page1":
